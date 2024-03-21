@@ -1,0 +1,23 @@
+import java.util.Scanner;
+
+public class Q_10807 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int n = scanner.nextInt();
+
+        int[] l = new int[n];
+        for (int i = 0; i < n; i++) {
+            l[i] = scanner.nextInt();
+        }
+
+        int v = scanner.nextInt();
+
+
+        int cnt = 0;
+        for (int i = 0; i < n; i++) {
+            if( l[i] == v ) cnt++;
+        }
+        System.out.println(cnt);
+
+    }
+}
