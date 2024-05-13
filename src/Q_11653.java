@@ -8,21 +8,21 @@ public class Q_11653 {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int n = Integer.parseInt(br.readLine());
         int[] ds = getPrimeList(n);
-        System.out.println("len " + ds.length);
 
-        while (n != 1) {
+        while (!isPrime(n)) {
             for (int i = 0; i < ds.length; i++) {
                 if( n % ds[i] == 0 ) {
                     System.out.println(ds[i]);
                     n = n / ds[i];
+                    break;
                 }
             }
         }
 
-        //작성중..
-
         if( n != 1 ) System.out.println(n);
     }
+
+    //작성중..
 
     private static int[] getPrimeList(int n) {
         int[] arr = new int[n / 2];
@@ -31,9 +31,12 @@ public class Q_11653 {
         for (int i = 2; i*i <= n; i++) {
             if( !isPrime(i) ) continue;
             arr[idx++] = i;
+
+            int t = n/i;
+            if( isPrime(t) ) arr[idx++] = t;
         }
 
-        return Arrays.stream(arr).filter(x -> x > 0).toArray();
+        return Arrays.stream(arr).filter(x -> x > 0).sorted().toArray();
     }
 
     private static boolean isPrime(int n){
