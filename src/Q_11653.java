@@ -9,7 +9,15 @@ public class Q_11653 {
         int n = Integer.parseInt(br.readLine());
         int[] ds = getPrimeList(n);
 
-        while (!isPrime(n)) {
+        if( isPrime(n) ) {
+            System.out.println(n);
+            return; 
+        }
+
+        //개선중..
+
+        boolean c = true;
+        while (c) {
             for (int i = 0; i < ds.length; i++) {
                 if( n % ds[i] == 0 ) {
                     System.out.println(ds[i]);
@@ -17,12 +25,14 @@ public class Q_11653 {
                     break;
                 }
             }
+
+            for (int i = 0; i < ds.length; i++) {
+                if( n == ds[i] || n == 1 ) c = false;
+            }
         }
 
         if( n != 1 ) System.out.println(n);
     }
-
-    //작성중..
 
     private static int[] getPrimeList(int n) {
         int[] arr = new int[n / 2];
